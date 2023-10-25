@@ -1,3 +1,18 @@
+/*
+You are given an array of non-overlapping intervals intervals where intervals[i] = [starti, endi] represent the start and the end of the ith interval and intervals is sorted in ascending order by starti. You are also given an interval newInterval = [start, end] that represents the start and end of another interval.
+Insert newInterval into intervals such that intervals is still sorted in ascending order by starti and intervals still does not have any overlapping intervals (merge overlapping intervals if necessary).
+Return intervals after the insertion.
+
+Example 1:
+Input: intervals = [[1,3],[6,9]], newInterval = [2,5]
+Output: [[1,5],[6,9]]
+
+Example 2:
+Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]
+Output: [[1,2],[3,10],[12,16]]
+Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
+*/
+
 object InsertInterval extends App {
 
   def insert(intervals: Array[Array[Int]], newInterval: Array[Int]): Array[Array[Int]] = {
@@ -62,11 +77,7 @@ object InsertInterval extends App {
   val intervals = Array(Array(1,2), Array(3,5), Array(6,7), Array(8,10), Array(12,16))
   val newInterval = Array(4,8)
 
-//  val intervals = Array(Array(2, 6), Array(7, 9))
-//  val newInterval = Array(15,18)
-
-
-    insert2(intervals, newInterval).foreach(i => print(i.mkString("[", ",", "]")))
+  insert2(intervals, newInterval).foreach(i => print(i.mkString("[", ",", "]")))
 
 
 }

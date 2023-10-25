@@ -17,21 +17,23 @@ Input: nums = [3,3], target = 6
 Output: [0,1]
 */
 
-object twoSum extends App {
+object productExceptSelf extends App {
 
-  def twoSum(nums: Array[Int], target: Int): Array[Int] = {
-    val map = nums.zipWithIndex.toMap
-    val firstIndex  = nums.indices.indexWhere(i => map.get(target - nums(i)).exists(_ != i))
-    val secondIndex = map.find { case (number, index) => number == target - nums(firstIndex) && index != firstIndex }.map(_._2).getOrElse(-1)
-    Array(firstIndex, secondIndex)
+  def productExceptSelf(nums: Array[Int]): Array[Int] = {
+    val productAll = nums.product
+    nums.map {
+      case n@0 => (nums diff List(n)).product
+      case n   => productAll / n
+    }
+
   }
 
 
-  val nums: Array[Int] = Array(2,7,11,15)
+  val nums: Array[Int] = Array(1,2,3,4)
   val target: Int = 9
 
   println(
-    twoSum(nums, target).mkString("[",",","]")
+    productExceptSelf(nums).mkString("[",",","]")
   )
 
 }
